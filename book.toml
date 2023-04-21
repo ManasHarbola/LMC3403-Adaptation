@@ -1,0 +1,6 @@
+[book]
+authors = ["Manas Harbola"]
+language = "en"
+multilingual = false
+src = "src"
+title = "LMC3403-Adaptation"
