@@ -5,6 +5,8 @@ multilingual = false
 src = "src"
 title = "LMC3403-Adaptation"
 
-
 [build]
 build-dir = "docs"
+
+[preprocessor.glossary-injector]
+command = "python3 glossary_injector.py"

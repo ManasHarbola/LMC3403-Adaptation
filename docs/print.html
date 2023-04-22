@@ -146,6 +146,20 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+<p><img src="comics/panel10.png" alt="alttext" title="a title" /></p>
+<script>
+    {
+        const img_node = document.currentScript.previousElementSibling.childNodes[0];
+        const terms = [{x:615,y:212,w:85,h:52,content:"hello"}];
+        img_node.addEventListener('click', e => {
+            const scale = img_node.naturalWidth / img_node.offsetWidth;
+            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
+            for (const t of terms)
+                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
+                    alert(t.content);
+        });
+    }
+</script>
 
                     </main>
 
