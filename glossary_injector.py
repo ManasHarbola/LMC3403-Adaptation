@@ -16,17 +16,23 @@ PANEL_TITLE_REGEX = re.compile(r'^title\((.*)\)')
 INJECTION_GLOSS_TERM = '{{x:{0},y:{1},w:{2},h:{3},content:{4}}}'
 INJECTION_SCRIPT = '''
 <script>
-    {{
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = {3};
-        img_node.addEventListener('click', e => {{
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        }});
-    }}
+{{
+    const terms = {3};
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    img_node.addEventListener('load', e => {{
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {{
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${{t.x*scale}}px;top:${{t.y*scale}}px;width:${{t.w*scale}}px;height:${{t.h*scale}}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }}
+    }});
+}}
 </script>
 '''
 INJECTION_TEMPLATE = '![{0}]({1} {2})\n' + INJECTION_SCRIPT
