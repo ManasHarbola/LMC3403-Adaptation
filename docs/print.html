@@ -148,322 +148,476 @@
                         <h2 id="introduction-to-the-chip-8"><a class="header" href="#introduction-to-the-chip-8">Introduction to the CHIP-8</a></h2>
 <p><img src="intro/intro1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="prerequisite-knowledge"><a class="header" href="#prerequisite-knowledge">Prerequisite Knowledge</a></h2>
 <p><img src="prerequisite_knowledge/prerequisite.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="binary-and-hexadecimal-numbers"><a class="header" href="#binary-and-hexadecimal-numbers">Binary and Hexadecimal Numbers</a></h2>
 <p><img src="prerequisite_knowledge/binary.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/hex.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="logic-operations"><a class="header" href="#logic-operations">Logic Operations</a></h2>
 <p><img src="prerequisite_knowledge/logic_1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/logic_2.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/logic_3.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="registers-ram-hard-drives"><a class="header" href="#registers-ram-hard-drives">Registers, RAM, Hard Drives</a></h2>
 <p><img src="prerequisite_knowledge/register1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/register2.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/register3.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="the-stack-and-function-calls"><a class="header" href="#the-stack-and-function-calls">The Stack and Function Calls</a></h2>
 <p><img src="prerequisite_knowledge/stack1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/stack2.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/stack3.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="general-anatomy-of-an-emulator"><a class="header" href="#general-anatomy-of-an-emulator">General Anatomy of an Emulator</a></h2>
 <p><img src="prerequisite_knowledge/emulator1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="prerequisite_knowledge/emulator2.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chip-8-instructions"><a class="header" href="#chip-8-instructions">CHIP-8 Instructions</a></h1>
 <p>Before you start making a CHIP-8 emulator, you need to know how CHIP-8 programs are written.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="arithmetic-instructions"><a class="header" href="#arithmetic-instructions">Arithmetic Instructions</a></h2>
-<p><img src="instruction_set/arithmetic_1.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/arithmetic_1.png" alt="ALT TEXT" title="Arithmetic instruction panel 1" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [{x:622,y:219,w:70,h:38,content:"Short for hexadecimal, or base-16"}];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
-<p><img src="instruction_set/arithmetic_2.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/arithmetic_2.png" alt="ALT TEXT" title="Arithmetic instruction panel 2" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="control-flow-instructions"><a class="header" href="#control-flow-instructions">Control Flow Instructions</a></h2>
-<p><img src="instruction_set/ctrl_flow_1.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/ctrl_flow_1.png" alt="ALT TEXT" title="Control flow instruction panel 1" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [{x:1514,y:621,w:337,h:52,content:"A register storing the address of the next instruction to execute"}];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
-<p><img src="instruction_set/ctrl_flow_2.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/ctrl_flow_2.png" alt="ALT TEXT" title="Control flow instruction panel 2" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
-<p><img src="instruction_set/ctrl_flow_3.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/ctrl_flow_3.png" alt="ALT TEXT" title="Control flow instruction panel 3" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [{x:622,y:215,w:247,h:49,content:"A callable section of code. Similar to a function, but usually used in the context of assembly programs."}, {x:1560,y:241,w:121,h:43,content:"A section of memory dedicated to holding the value of the addresses to return to after completing a function call."}];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="memory-instructions"><a class="header" href="#memory-instructions">Memory Instructions</a></h2>
-<p><img src="instruction_set/mem_1.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/mem_1.png" alt="ALT TEXT" title="Memory instruction panel 1" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
-<p><img src="instruction_set/mem_2.png" alt="ALT TEXT" title="TITLE" /></p>
+<p><img src="instruction_set/mem_2.png" alt="ALT TEXT" title="Memory instruction panel 2" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 
                     </main>

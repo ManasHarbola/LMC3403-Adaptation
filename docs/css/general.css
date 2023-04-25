@@ -201,3 +201,14 @@ kbd {
 .result-no-output {
     font-style: italic;
 }
+
+.gloss-term-overlay {
+    position: absolute;
+    outline: dotted;
+    outline-color: black;
+    cursor: help;
+}
+
+.comic-panel {
+    position: relative;
+}

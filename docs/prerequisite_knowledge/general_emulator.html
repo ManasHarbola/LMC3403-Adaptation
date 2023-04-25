@@ -147,31 +147,45 @@
                         <h2 id="general-anatomy-of-an-emulator"><a class="header" href="#general-anatomy-of-an-emulator">General Anatomy of an Emulator</a></h2>
 <p><img src="emulator1.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 <p><img src="emulator2.png" alt="ALT TEXT" title="TITLE" /></p>
 <script>
-    {
-        const img_node = document.currentScript.previousElementSibling.childNodes[0];
-        const terms = [];
-        img_node.addEventListener('click', e => {
-            const scale = img_node.naturalWidth / img_node.offsetWidth;
-            const ex = (e.pageX - img_node.offsetLeft) * scale, ey = (e.pageY - img_node.offsetTop) * scale;
-            for (const t of terms)
-                if (ex >= t.x && ex <= t.x+t.w && ey >= t.y && ey <= t.y+t.h)
-                    alert(t.content);
-        });
-    }
+{
+    const terms = [];
+
+    const panel_container = document.currentScript.previousElementSibling;
+    panel_container.classList.add('comic-panel');
+
+    const img_node = panel_container.childNodes[0];
+    img_node.addEventListener('load', e => {
+        const scale = img_node.offsetWidth / img_node.naturalWidth;
+        for (const t of terms) {
+            const t_overlay = document.createElement('div');
+            t_overlay.classList.add('gloss-term-overlay');
+            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
+            t_overlay.addEventListener('click', e => alert(t.content));
+            panel_container.appendChild(t_overlay);
+        }
+    });
+}
 </script>
 
                     </main>
