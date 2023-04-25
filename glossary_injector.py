@@ -22,6 +22,7 @@ INJECTION_SCRIPT = '''
     const panel_container = document.currentScript.previousElementSibling;
     panel_container.classList.add('comic-panel');
 
+    const img_node = panel_container.childNodes[0];
     img_node.addEventListener('load', e => {{
         const scale = img_node.offsetWidth / img_node.naturalWidth;
         for (const t of terms) {{
