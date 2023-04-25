@@ -11,3 +11,5 @@
     - [Arithmetic Instructions](./instruction_set/arithmetic.md)
     - [Control Flow Instructions](./instruction_set/ctrl_flow.md)
     - [Memory Instructions](./instruction_set/memory.md)
+- [Appendicies](./appendix/chapter.md)
+    - [Full CHIP-8 Instruction Set](./appendix/isa.md)

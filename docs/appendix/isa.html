@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Full CHIP-8 Instruction Set - A Guide to the CHIP-8</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/prerequisite.html"><strong aria-hidden="true">2.</strong> Prerequisite Knowledge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prerequisite_knowledge/binary_hex.html"><strong aria-hidden="true">2.1.</strong> Binary and Hexadecimal Numbers</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/logic_operations.html"><strong aria-hidden="true">2.2.</strong> Logic Operations</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/registers_ram.html"><strong aria-hidden="true">2.3.</strong> Registers, Ram, Hard Drives</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/stack_functions.html"><strong aria-hidden="true">2.4.</strong> The Stack and Function Calls</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/general_emulator.html"><strong aria-hidden="true">2.5.</strong> General Anatomy of an Emulator</a></li></ol></li><li class="chapter-item expanded "><a href="../instruction_set/chapter.html"><strong aria-hidden="true">3.</strong> CHIP-8 Instructions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../instruction_set/arithmetic.html"><strong aria-hidden="true">3.1.</strong> Arithmetic Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/ctrl_flow.html"><strong aria-hidden="true">3.2.</strong> Control Flow Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/memory.html"><strong aria-hidden="true">3.3.</strong> Memory Instructions</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/chapter.html"><strong aria-hidden="true">4.</strong> Appendicies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/isa.html" class="active"><strong aria-hidden="true">4.1.</strong> Full CHIP-8 Instruction Set</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">A Guide to the CHIP-8</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="appendix-a-chip-8-instruction-reference"><a class="header" href="#appendix-a-chip-8-instruction-reference">Appendix A: CHIP-8 Instruction Reference</a></h1>
+<p><strong>Notes</strong></p>
+<p>The notation <em>Vx</em> or <em>Vy</em> refers to any general-purpose register (i.e. registers 0 through F). The notation for other registers is as follows:</p>
+<ul>
+<li><code>I</code> - memory address register</li>
+<li><code>PC</code> - program counter register</li>
+<li><code>SP</code> - stack pointer register</li>
+<li><code>DT</code> - delay timer register</li>
+<li><code>ST</code> - sound timer register.</li>
+</ul>
+<p>Additionally, <em>nnn</em> refers to some memory address, and <em>kk</em> refers to some constant byte value.</p>
+<p>Many instructions have multiple versions. The format and semantics (in both English and C-style pseudocode) of each are listed.</p>
+<h3 id="add---addition"><a class="header" href="#add---addition"><code>ADD</code> - Addition</a></h3>
+<ul>
+<li><code>7xkk - ADD Vx, kk</code> : Adds the byte <em>kk</em> to the value in <em>Vx</em>. The result is stored in <em>Vx</em>.
+<ul>
+<li><code>Vx = Vx + kk;</code></li>
+</ul>
+</li>
+<li><code>8xy4 - ADD Vx, Vy</code> : Adds the value in <em>Vy</em> to the value in <em>Vx</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected.
+<ul>
+<li><code>Vx = Vx + Vy;</code></li>
+</ul>
+</li>
+<li><code>Fx1E</code> : Adds the value in <em>Vx</em> to memory address register <code>I</code>. The result is stored in <code>I</code>; <em>Vx</em> is unaffected.
+<ul>
+<li><code>I = I + Vx;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="and---bitwise-and"><a class="header" href="#and---bitwise-and"><code>AND</code> - Bitwise AND</a></h3>
+<ul>
+<li><code>8xy2 - AND Vx, Vy</code> : Performs a bitwise AND of the values in <em>Vx</em> and <em>Vy</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected.
+<ul>
+<li><code>Vx = Vx &amp; Vy;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="bcd---binary-coded-decimal"><a class="header" href="#bcd---binary-coded-decimal"><code>BCD</code> - Binary-coded decimal</a></h3>
+<ul>
+<li><code>Fx33 - BCD Vx</code> : Stores the digits of the decimal representation of the value in <em>Vx</em> into three memory locations starting at the address in <code>I</code>.
+<ul>
+<li><code>*I = hundreds_digit(Vx); *(I+1) = tens_digit(Vx); *(I+2) = ones_digit(Vx);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="call---call-subroutinue"><a class="header" href="#call---call-subroutinue"><code>CALL</code> - Call subroutinue</a></h3>
+<ul>
+<li><code>2nnn - CALL nnn</code> : Pushes the current value of <code>PC</code> onto the top of the stack, and sets <code>PC</code> to <em>nnn</em>.
+<ul>
+<li><code>SP = SP + 1; stack[SP] = PC; PC = nnn;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="cls---clear-screen"><a class="header" href="#cls---clear-screen"><code>CLS</code> - Clear screen</a></h3>
+<ul>
+<li><code>00E0 - CLS</code> : Clears the screen
+<ul>
+<li><code>clear_screen();</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="drw---draw-sprite"><a class="header" href="#drw---draw-sprite"><code>DRW</code> - Draw sprite</a></h3>
+<ul>
+<li><code>Dxyn - DRW Vx, Vy, n</code> : Draws the <em>n</em> byte sprite located at the address in <code>I</code> on the screen, at coordinates (<em>Vx</em>, <em>Vy</em>). Drawing is done using XOR, and <em>VF</em> is set if any pixels are cleared in the process. Drawing is also done in a wrap-around fashion, so any part of the sprite that would be placed outside of the display boundaries is drawn on the opposite side.
+<ul>
+<li><code>draw_sprite(Vx, Vy, I, n);</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="jp---jump"><a class="header" href="#jp---jump"><code>JP</code> - Jump</a></h3>
+<ul>
+<li><code>1nnn - JP nnn</code> : Sets <code>PC</code> to the address <em>nnn</em>.
+<ul>
+<li><code>PC = nnn;</code></li>
+</ul>
+</li>
+<li><code>Bnnn - JP V0, nnn</code> : Sets <code>PC</code> to the sum of the value in <em>V0</em> and <em>nnn</em>.
+<ul>
+<li><code>PC = V0 + nnn;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ld---load"><a class="header" href="#ld---load"><code>LD</code> - Load</a></h3>
+<ul>
+<li><code>6xkk - LD Vx, kk</code> : Loads the byte value <em>kk</em> into <em>Vx</em>.
+<ul>
+<li><code>Vx = kk;</code></li>
+</ul>
+</li>
+<li><code>8xy0 - LD Vx, Vy</code> : Loads the value in <em>Vy</em> into <em>Vx</em>. <em>Vy</em> is unaffected.
+<ul>
+<li><code>Vx = Vy;</code></li>
+</ul>
+</li>
+<li><code>Annn - LD I, nnn</code> : Loads the address <em>nnn</em> into <code>I</code>.
+<ul>
+<li><code>I = nnn;</code></li>
+</ul>
+</li>
+<li><code>Fx07 - LD Vx, DT</code> : Loads the value of <code>DT</code> into <em>Vx</em>. The value of the delay timer is unaffected.
+<ul>
+<li><code>Vx = DT;</code></li>
+</ul>
+</li>
+<li><code>Fx0A - LD Vx, K</code> : Loads the value of the next pressed key into <em>Vx</em>. Program execution is halted until a key is pressed.
+<ul>
+<li><code>Vx = get_next_key();</code></li>
+</ul>
+</li>
+<li><code>Fx15 - LD DT, Vx</code> : Loads the value in <em>Vx</em> into <code>DT</code>. <em>Vx</em> is unaffected.
+<ul>
+<li><code>DT = Vx;</code></li>
+</ul>
+</li>
+<li><code>Fx18 - LD ST, Vx</code> : Loads the value in <em>Vx</em> into <code>ST</code>. <em>Vx</em> is unaffected.
+<ul>
+<li><code>ST = Vx;</code></li>
+</ul>
+</li>
+<li><code>Fx55 - LD I, Vx</code> : Loads the registers <em>V0</em> through <em>Vx</em> into the memory locations starting at the address in <code>I</code>. All registers are unaffected.
+<ul>
+<li><code>*I = V0; *(I+1) = V1; ...; *(I+x) = Vx;</code></li>
+</ul>
+</li>
+<li><code>Fx65 - LD Vx, I</code> : Loads the values in memory starting at the address in <code>I</code> into registers <em>V0</em> through <em>Vx</em>. All memory locations are unaffected.
+<ul>
+<li><code>V0 = I[0]; V1 = I[1]; ...; Vx = I[x];</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ldf---load-font"><a class="header" href="#ldf---load-font"><code>LDF</code> - Load font</a></h3>
+<ul>
+<li><code>Fx29 - LDF Vx</code> : Loads the location of the hexadecimal sprite corresponding to the value in <em>Vx</em> into <code>I</code>.
+<ul>
+<li><code>I = hex_sprites[Vx];</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="or---bitwise-or"><a class="header" href="#or---bitwise-or"><code>OR</code> - Bitwise OR</a></h3>
+<ul>
+<li><code>8xy1 - OR Vx, Vy</code> : Performs a bitwise OR of the values in <em>Vx</em> and <em>Vy</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected.
+<ul>
+<li><code>Vx = Vx | Vy;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ret---return-from-subroutinue"><a class="header" href="#ret---return-from-subroutinue"><code>RET</code> - Return from subroutinue</a></h3>
+<ul>
+<li><code>00EE - RET</code> : Removes and sets the program counter to the top-most address on the stack.
+<ul>
+<li><code>PC = stack[SP]; SP = SP - 1;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="rnd---random-value"><a class="header" href="#rnd---random-value"><code>RND</code> - Random value</a></h3>
+<ul>
+<li><code>Cxkk - RND Vx, kk</code> : Generates a random byte, then performs a bitwise AND between it and <em>kk</em>. The result is stored in <em>Vx</em>.
+<ul>
+<li><code>Vx = rnd() &amp; kk;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="s---skip-next-instruction"><a class="header" href="#s---skip-next-instruction"><code>S</code> - Skip next instruction</a></h3>
+<ul>
+<li><code>3xkk - SE Vx, kk</code> : Skips the next instruction if <em>Vx</em> has the value <em>kk</em>.
+<ul>
+<li><code>PC = (Vx == kk ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+<li><code>4xkk - SNE Vx, kk</code> : Skips the next instruction if <em>Vx</em> does not have the value <em>kk</em>.
+<ul>
+<li><code>PC = (Vx != kk ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+<li><code>5xy0 - SE Vx, Vy</code> : Skips the next instruction if <em>Vx</em> and <em>Vy</em> have the same values.
+<ul>
+<li><code>PC = (Vx == Vy ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+<li><code>9xy0 - SNE Vx, Vy</code> : Skips the next instruction if <em>Vx</em> and <em>Vy</em> do not have the same values.
+<ul>
+<li><code>PC = (Vx != Vy ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+<li><code>Ex9E - SKP Vx</code> : Skips the next instruction if the key with the same value as <em>Vx</em> is pressed.
+<ul>
+<li><code>PC = (key_pressed(Vx) ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+<li><code>ExA1 - SKNP Vx</code> : Skips the next instruction if the key with the same value as <em>Vx</em> is not pressed.
+<ul>
+<li><code>PC = (!key_pressed(Vx) ? (PC + 2) : (PC + 1));</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="sh---bitwise-shift"><a class="header" href="#sh---bitwise-shift"><code>SH</code> - Bitwise shift</a></h3>
+<ul>
+<li><code>8xy6 - SHR Vx</code> : Sets <em>VF</em> to the value of the least significant bit of the value in Vx, then shifts the value in <em>Vx</em> right by one bit. The result is stored in <em>Vx</em>.
+<ul>
+<li><code>VF = Vx &amp; 1; Vx = Vx &gt;&gt; 1;</code></li>
+</ul>
+</li>
+<li><code>8xyE - SHL Vx</code> : Sets <em>VF</em> to the value of the most significant bit of the value in Vx, then shifts the value in <em>Vx</em> left by one bit. The result is stored in <em>Vx</em>.
+<ul>
+<li><code>VF = msb(Vx); Vx = Vx &lt;&lt; 1;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="sub---subtraction"><a class="header" href="#sub---subtraction"><code>SUB</code> - Subtraction</a></h3>
+<ul>
+<li><code>8xy5 - SUB Vx, Vy</code> : Subtracts the value in <em>Vy</em> from the value in <em>Vx</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected. If the result would be negative, <em>VF</em> is set to 1; otherwise, it is set to 0.
+<ul>
+<li><code>Vx = Vx - Vy;</code></li>
+</ul>
+</li>
+<li><code>8xy7 - SUBN Vx, Vy</code> : Subtracts the value in <em>Vx</em> from the value in <em>Vy</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected. If the result would be negative, <em>VF</em> is set to 1; otherwise, it is set to 0.
+<ul>
+<li><code>Vx = Vy - Vx;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="sys---system-call-deprecated"><a class="header" href="#sys---system-call-deprecated"><code>SYS</code> - System call [DEPRECATED]</a></h3>
+<ul>
+<li><code>0nnn - SYS nnn</code> : Jumps to machine code subroutinue at address <em>nnn</em>. This instruction is deprecated, and ignored by most modern emulators.
+<ul>
+<li><code>PC = nnn;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="xor---bitwise-xor"><a class="header" href="#xor---bitwise-xor"><code>XOR</code> - Bitwise XOR</a></h3>
+<ul>
+<li><code>8xy3 - XOR Vx, Vy</code> : Performs a bitwise exclusive OR (XOR) of the values in <em>Vx</em> and <em>Vy</em>. The result is stored in <em>Vx</em>; <em>Vy</em> is unaffected.
+<ul>
+<li><code>Vx = Vx ^ Vy;</code></li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../appendix/chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../appendix/chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

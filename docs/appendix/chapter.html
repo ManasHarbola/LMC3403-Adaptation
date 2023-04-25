@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Registers, Ram, Hard Drives - A Guide to the CHIP-8</title>
+        <title>Appendicies - A Guide to the CHIP-8</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/prerequisite.html"><strong aria-hidden="true">2.</strong> Prerequisite Knowledge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prerequisite_knowledge/binary_hex.html"><strong aria-hidden="true">2.1.</strong> Binary and Hexadecimal Numbers</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/logic_operations.html"><strong aria-hidden="true">2.2.</strong> Logic Operations</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/registers_ram.html" class="active"><strong aria-hidden="true">2.3.</strong> Registers, Ram, Hard Drives</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/stack_functions.html"><strong aria-hidden="true">2.4.</strong> The Stack and Function Calls</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/general_emulator.html"><strong aria-hidden="true">2.5.</strong> General Anatomy of an Emulator</a></li></ol></li><li class="chapter-item expanded "><a href="../instruction_set/chapter.html"><strong aria-hidden="true">3.</strong> CHIP-8 Instructions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../instruction_set/arithmetic.html"><strong aria-hidden="true">3.1.</strong> Arithmetic Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/ctrl_flow.html"><strong aria-hidden="true">3.2.</strong> Control Flow Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/memory.html"><strong aria-hidden="true">3.3.</strong> Memory Instructions</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/chapter.html"><strong aria-hidden="true">4.</strong> Appendicies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/isa.html"><strong aria-hidden="true">4.1.</strong> Full CHIP-8 Instruction Set</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro/intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/prerequisite.html"><strong aria-hidden="true">2.</strong> Prerequisite Knowledge</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../prerequisite_knowledge/binary_hex.html"><strong aria-hidden="true">2.1.</strong> Binary and Hexadecimal Numbers</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/logic_operations.html"><strong aria-hidden="true">2.2.</strong> Logic Operations</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/registers_ram.html"><strong aria-hidden="true">2.3.</strong> Registers, Ram, Hard Drives</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/stack_functions.html"><strong aria-hidden="true">2.4.</strong> The Stack and Function Calls</a></li><li class="chapter-item expanded "><a href="../prerequisite_knowledge/general_emulator.html"><strong aria-hidden="true">2.5.</strong> General Anatomy of an Emulator</a></li></ol></li><li class="chapter-item expanded "><a href="../instruction_set/chapter.html"><strong aria-hidden="true">3.</strong> CHIP-8 Instructions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../instruction_set/arithmetic.html"><strong aria-hidden="true">3.1.</strong> Arithmetic Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/ctrl_flow.html"><strong aria-hidden="true">3.2.</strong> Control Flow Instructions</a></li><li class="chapter-item expanded "><a href="../instruction_set/memory.html"><strong aria-hidden="true">3.3.</strong> Memory Instructions</a></li></ol></li><li class="chapter-item expanded "><a href="../appendix/chapter.html" class="active"><strong aria-hidden="true">4.</strong> Appendicies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/isa.html"><strong aria-hidden="true">4.1.</strong> Full CHIP-8 Instruction Set</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,80 +144,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="registers-ram-hard-drives"><a class="header" href="#registers-ram-hard-drives">Registers, RAM, Hard Drives</a></h2>
-<p><img src="register1.png" alt="ALT TEXT" title="TITLE" /></p>
-<script>
-{
-    const terms = [{x:1083,y:326,w:267,h:69,content:"Quickly accessible location of memory available to a CPU."}, {x:1080,y:441,w:680,h:77,content:"Short-term computer memory that supports reading/writing data with consistent latency."}, {x:1077,y:683,w:293,h:67,content:"Permanent storage for reading/writing data at far lower speeds than RAM/CPU registers."}];
-
-    const panel_container = document.currentScript.previousElementSibling;
-    panel_container.classList.add('comic-panel');
-
-    const img_node = panel_container.childNodes[0];
-    img_node.addEventListener('load', e => {
-        const scale = img_node.offsetWidth / img_node.naturalWidth;
-        for (const t of terms) {
-            const t_overlay = document.createElement('div');
-            t_overlay.classList.add('gloss-term-overlay');
-            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
-            t_overlay.addEventListener('click', e => alert(t.content));
-            panel_container.appendChild(t_overlay);
-        }
-    });
-}
-</script>
-<p><img src="register2.png" alt="ALT TEXT" title="TITLE" /></p>
-<script>
-{
-    const terms = [];
-
-    const panel_container = document.currentScript.previousElementSibling;
-    panel_container.classList.add('comic-panel');
-
-    const img_node = panel_container.childNodes[0];
-    img_node.addEventListener('load', e => {
-        const scale = img_node.offsetWidth / img_node.naturalWidth;
-        for (const t of terms) {
-            const t_overlay = document.createElement('div');
-            t_overlay.classList.add('gloss-term-overlay');
-            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
-            t_overlay.addEventListener('click', e => alert(t.content));
-            panel_container.appendChild(t_overlay);
-        }
-    });
-}
-</script>
-<p><img src="register3.png" alt="ALT TEXT" title="TITLE" /></p>
-<script>
-{
-    const terms = [];
-
-    const panel_container = document.currentScript.previousElementSibling;
-    panel_container.classList.add('comic-panel');
-
-    const img_node = panel_container.childNodes[0];
-    img_node.addEventListener('load', e => {
-        const scale = img_node.offsetWidth / img_node.naturalWidth;
-        for (const t of terms) {
-            const t_overlay = document.createElement('div');
-            t_overlay.classList.add('gloss-term-overlay');
-            t_overlay.style = `left:${t.x*scale}px;top:${t.y*scale}px;width:${t.w*scale}px;height:${t.h*scale}px;`
-            t_overlay.addEventListener('click', e => alert(t.content));
-            panel_container.appendChild(t_overlay);
-        }
-    });
-}
-</script>
+                        <h1 id="appendicies"><a class="header" href="#appendicies">Appendicies</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../prerequisite_knowledge/logic_operations.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../instruction_set/memory.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../prerequisite_knowledge/stack_functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../appendix/isa.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -227,11 +164,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../prerequisite_knowledge/logic_operations.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../instruction_set/memory.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../prerequisite_knowledge/stack_functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../appendix/isa.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
